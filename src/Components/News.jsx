@@ -2,8 +2,8 @@ import React from 'react';
 
 const News = () => {
     return (
-        <div className='border p-6 rounded-lg lg:ml-40 lg:w-4/5'>
-            <div className='text-center bg-gradient-to-r from-blue-100 to-orange-100 rounded-lg  p-10'>
+        <div className='border  p-6 rounded-lg lg:ml-40 lg:w-4/5'>
+            <div className='text-center bg-gradient-to-r from-blue-100 to-orange-100 rounded-lg  p-12'>
               <h6 className="font-bold text-4xl">Subscribe to our Newsletter</h6>
               <p className='text-xl pt-5'>Get the latest updates and news right in your inbox!</p>
     

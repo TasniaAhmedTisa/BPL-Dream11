@@ -11,7 +11,6 @@ const Players = ({ coins, setCoins }) => {
     const [selectedPlayers, setSelectedPlayers] = useState([]);
     const [showAvailable, setShowAvailable] = useState(true);
 
-    const COIN_REQUIREMENT = 100000;
 
     useEffect(() => {
         fetch('/players.json')
@@ -25,18 +24,24 @@ const Players = ({ coins, setCoins }) => {
     };
 
     const selectPlayer = (player) => {
+
+        if (selectedPlayers.length >= 6) {
+            toast.error("You can only select up to 6 players.");
+            return; // Terminate the function
+        }
+        
         if (selectedPlayers.some(selected => selected.playerId === player.playerId)) {
             toast.error("Player is already selected.");
             return;
         }
 
-        if (coins < COIN_REQUIREMENT) {
+        if (coins < player.biddingPrice) {
             toast.error("Not enough coins to select this player.");
             return;
         }
 
         setSelectedPlayers([...selectedPlayers, player]);
-        setCoins(coins - COIN_REQUIREMENT); 
+        setCoins(prevCoins => prevCoins - player.biddingPrice);
         toast.success(`${player.name} has been added to your team!`);
     };
     const removePlayer = (playerId) => {
@@ -49,7 +54,7 @@ const Players = ({ coins, setCoins }) => {
             <div className="navbar bg-base-100">
                 <div className="flex-1">
                     <h2 className="text-2xl font-bold">
-                        {showAvailable ? "Available Players" : "Selected Players"}
+                        {showAvailable ? "Available Players" : (`Selected Players (${selectedPlayers.length}/11)`)}
                     </h2>
                 </div>
                 <div className="flex-none join">

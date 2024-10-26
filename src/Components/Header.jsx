@@ -1,10 +1,9 @@
 
 
-// eslint-disable-next-line react/prop-types
 const Header = ({ coins }) => {
     
     return (
-    <div className='flex justify-between gap-1 lg:gap-80 m-10'>
+    <div className='flex justify-between lg:gap-80 m-10 sticky top-0 z-50 bg-white/30 backdrop-blur-md'>
 
        <div className="navbar-start">
         <img src="images/logo.png" alt="logo" />

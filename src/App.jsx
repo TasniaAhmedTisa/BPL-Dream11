@@ -15,17 +15,23 @@ const App = () => {
   const [coins, setCoins] = useState(0);
 
     const addCoins = (amount) => {
-        setCoins(prevCoins => prevCoins + amount); // Add amount to current coins
+        setCoins(prevCoins => prevCoins + amount); 
     };
   return (
     <div className="m-10">
+       <ToastContainer />
       <Header coins={coins} />
       <Banner addCoins={addCoins} />
       <Players coins={coins} setCoins={setCoins} />
-      <News></News>
-      <Footer></Footer>
+      <div className="relative z-10"> 
+        <News />
+      </div>
+      <div className="relative z-0 -mt-20"> 
+        <Footer />
+      </div>
+      </div>
       
-    </div>
+  
   );
 };
 
