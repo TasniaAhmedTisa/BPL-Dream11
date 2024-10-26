@@ -11,7 +11,7 @@ const Players = ({ coins, setCoins }) => {
     const [selectedPlayers, setSelectedPlayers] = useState([]);
     const [showAvailable, setShowAvailable] = useState(true);
 
-    const COIN_REQUIREMENT = 5;
+    const COIN_REQUIREMENT = 100000;
 
     useEffect(() => {
         fetch('/players.json')
@@ -56,7 +56,7 @@ const Players = ({ coins, setCoins }) => {
                     <button className="btn join-item" onClick={() => toggleView('available')}>
                         Available
                     </button>
-                    <button className="btn join-item" onClick={() => toggleView('selected')}>
+                    <button className="btn bg-lime-400 join-item" onClick={() => toggleView('selected')}>
                         Selected ({selectedPlayers.length})
                     </button>
                 </div>
@@ -118,7 +118,7 @@ const Players = ({ coins, setCoins }) => {
                         </div>
                     ))}
                     <div className='border border-black m-2 w-40 rounded-xl p-2'>
-                    <button className='btn border-green-600 bg-lime-300 w-full rounded-xl'>Add More</button>
+                    <button className='btn border-green-600 bg-lime-300 w-full rounded-xl' onClick={() => toggleView('available')}>Add More</button>
 
                     </div>
                                            

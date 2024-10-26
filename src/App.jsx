@@ -12,7 +12,7 @@ import Players from "./Components/Players/Players";
 const App = () => {
 
   <ToastContainer position="top-right" autoClose={3000} />
-  const [coins, setCoins] = useState(0); // State to hold coin amount
+  const [coins, setCoins] = useState(0);
 
     const addCoins = (amount) => {
         setCoins(prevCoins => prevCoins + amount); // Add amount to current coins
@@ -21,7 +21,7 @@ const App = () => {
     <div className="m-10">
       <Header coins={coins} />
       <Banner addCoins={addCoins} />
-      <Players></Players>
+      <Players coins={coins} setCoins={setCoins} />
       <News></News>
       <Footer></Footer>
       
